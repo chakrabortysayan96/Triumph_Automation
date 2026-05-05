@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Reports and artifacts
+reports/
+
+# Virtual environment
+.venv/
+venv/
+env/
