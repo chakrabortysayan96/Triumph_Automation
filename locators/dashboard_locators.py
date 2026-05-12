@@ -51,8 +51,82 @@ class DashboardLocators:
     # --- Apply Button ---
     # Confirms the column configuration and reloads the dashboard grid.
     APPLY_BUTTON = "Apply"
+    APPLY_BUTTON_TESTID = "apply-button"
+
+    # --- Cancel Button ---
+    # Discards any pending column changes and closes the panel.
+    CANCEL_BUTTON_TESTID = "cancel-button"
 
     # --- Dashboard Column Header Verification ---
     # CSS class shared by all sortable column header buttons in the grid.
     # Used to check whether a column header is present after applying changes.
     COLUMN_HEADER_CLASS = "header-title"
+
+    # --- Column Sorting ---
+    # CSS compound-class selector (dot notation) for sortable column header
+    # buttons. Non-sortable columns (e.g., Notes) do NOT have this class.
+    # Value deliberately omits the leading dot so callers prepend it:
+    #   f".{SORTABLE_HEADER_CLASS}"  →  ".header-title.sortable"
+    SORTABLE_HEADER_CLASS = "header-title.sortable"
+
+    # The img alt text injected by the app to indicate sort direction.
+    # Confirmed via live inspection: values are exactly these strings.
+    SORT_ASC_ALT  = "in ascending order"
+    SORT_DESC_ALT = "in descending order"
+
+    # data-testid on every <th> cell — used to scope column-header queries.
+    TABLE_HEADER_CELL_TESTID = "table-header-cell"
+
+    # The column that is non-sortable by design (confirmed live).
+    NOTES_COLUMN_NAME = "Notes"
+
+    # --- Export as Excel Button ---
+    # data-testid confirmed via live inspection.
+    EXPORT_EXCEL_BUTTON_TESTID = "s2pim-table-invoices-export-as-excel-btn"
+
+    # --- Priority filter values (confirmed via live inspection) ---
+    PRIORITY_HIGH    = "High"
+    PRIORITY_MEDIUM  = "Medium"
+    PRIORITY_LOW     = "Low"
+
+    # --- Export CSV column headers (confirmed via live download, 2026-05-11) ---
+    # The Export as Excel button downloads a .csv file.  These are the exact
+    # column header strings that appear in row 1 of the downloaded file.
+    # Independent of the Change Grid View configuration — the export always
+    # includes this fixed server-side column set.
+    EXPECTED_EXPORT_HEADERS = (
+        "System ID",
+        "Invoice No.",
+        "PO No.",
+        "PO Type",
+        "Supplier",
+        "Invoice Src. Doc.",
+        "Business Unit",
+        "Invoice Date",
+        "Invoice Due Date",
+        "Currency",
+        "WHT Code",
+        "IRN / FSI",
+        "Payment Reference",
+        "Tax Point Date",
+        "Currency Key",
+        "Gross Amount",
+        "Submitter",
+        "Requester",
+        "Requester Email",
+        "Priority",
+        "Status",
+        "Notes",
+    )
+
+    # --- Horizontal Scrollbar Detection ---
+    # Stable CSS selector (partial class match) for the wrapper div that directly
+    # contains the <table>. Its *parent* element is the overflow-x:auto scroll
+    # container. Confirmed live: class includes "aiops-table-wrap" (stable BEM
+    # token) alongside a CSS-module hash.
+    TABLE_WRAP_CLASS_SUBSTRING = "aiops-table-wrap"
+
+    # --- Due Date Dashboard & Sort ---
+    # Column header names used for position and sort verification.
+    INVOICE_DUE_DATE_COL_HEADER = "Invoice Due Date"
+    INVOICE_DATE_COL_HEADER     = "Invoice Date"

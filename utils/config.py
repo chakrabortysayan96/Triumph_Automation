@@ -9,3 +9,4 @@ PASSWORD = os.getenv("PASSWORD")
 
 VIDEOS_DIR = "reports/videos"
 SCREENSHOTS_DIR = "reports/screenshots"
+DOWNLOADS_DIR = "reports/downloads"
